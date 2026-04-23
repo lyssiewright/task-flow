@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Login from "./Login";
+import Tasks from "./Tasks";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message))
-      .catch((err) => console.error(err));
-  }, []);
-
   return (
-    <div>
-      <h1>Frontend Connected 🚀</h1>
-      <p>{message}</p>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      
+      <Route
+        path="/tasks"
+        element={
+          <ProtectedRoute>
+            <Tasks />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 }
 
