@@ -94,7 +94,7 @@ function Tasks() {
         ))
       )}
       </div>
-      <button onClick={handleLogout}>Logout</button>
+      <button style={styles.loginButton} onClick={handleLogout}>Logout</button>
     </div>
   );
 }
@@ -106,11 +106,20 @@ const styles = {
         backgroundSize: "cover",
         backgroundPosition: "center",
         padding: "2rem",
+        overflow: "auto"
     },
     tasksContainer: {
         display: "grid",
         gridTemplateColumns: "repeat(4, 1fr)",
         columnGap: "1rem",
+        rowGap: "1rem"
+    },
+    loginButton: {
+        position: "fixed",
+        top: "0",
+        right: "1rem",
+        background: "none",
+        border: "none"
     }
 }
 
