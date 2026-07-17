@@ -89,10 +89,16 @@ function Tasks() {
       <TaskForm onCreate={handleCreateTask}/>
       <div style={styles.tasksContainer}>{tasks.length === 0 ? (
         <p>No tasks yet</p>) : 
-        (tasks.map((task) => (
-          <TaskItem key={task.id} task={task} onDelete={handleDeleteTask}/>
+        [...tasks]
+        .sort((a, b) => b.id - a.id)
+        .map((task) => (
+            <TaskItem
+                key={task.id}
+                task={task}
+                onDelete={handleDeleteTask}
+            />
         ))
-      )}
+        }  
       </div>
       <button style={styles.loginButton} onClick={handleLogout}>Logout</button>
     </div>
